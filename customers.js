@@ -16,14 +16,45 @@ var saveCustomer = (customer) => {
 
 // CRUD Operations
 
-// add customer to json
+var addCustomer = (id, name, email) => {
+    var customers = getCustomers();
+    var customer = {id, name, email}
 
-// get customer from json
+    var checkCustomer =  customers.filter((customer) => {
+        return customer.email === email;
+    });
+
+    if (checkCustomer.length === 0){
+        customers.push(customer);
+        saveCustomer(customers);
+        return customer
+    }
+
+};
+
+
+var getCustomerDetails = (email) => {
+
+    var customers = getCustomers();
+
+    var checkCustomer =  customers.filter((customer) => {
+        return customer.title === title;
+    });
+
+    return checkCustomer[0]
+
+};
+
+var log = (customer) => {
+    console.log('Customer '+ customer.email +' added to json');
+};
 
 //update customer in json
 
 // delete customer from json
 
-// fetch list of customers from json
 
-// export all the methods
+module.exports = {
+    addCustomer, getCustomerDetails
+};
+
