@@ -16,29 +16,32 @@ var saveCustomer = (customer) => {
 
 // CRUD Operations
 
-var addCustomer = (id, name, email) => {
-    var customers = getCustomers();
-    var customer = {id, name, email}
+var addCustomer = (id,name,emailID) => {
+    console.log('in add');
+     var customers = getCustomers();
+    var customer = {id,name,emailID}
 
-    var checkCustomer =  customers.filter((customer) => {
-        return customer.email === email;
-    });
+    console.log('in add' + id + name + emailID);
 
-    if (checkCustomer.length === 0){
+     var checkCustomer =  customers.filter((customer) => {
+         return customer.emailID === emailID;
+     });
+
+     if (checkCustomer.length === 0){
         customers.push(customer);
         saveCustomer(customers);
         return customer
-    }
+     }
 
 };
 
 
-var getCustomerDetails = (email) => {
+var getCustomerDetails = (emailID) => {
 
     var customers = getCustomers();
 
     var checkCustomer =  customers.filter((customer) => {
-        return customer.title === title;
+        return customer.emailID === emailID;
     });
 
     return checkCustomer[0]
@@ -46,7 +49,7 @@ var getCustomerDetails = (email) => {
 };
 
 var log = (customer) => {
-    console.log('Customer '+ customer.email +' added to json');
+    console.log('Customer '+ customer.emailID +' added to json');
 };
 
 //update customer in json

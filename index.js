@@ -7,34 +7,33 @@ const customer = require('./customers.js');
 const customerID = {
     describe: 'customer_id',
     demand : true,
-    alias : 'id'
+    alias : 'i'
 }
 
 const customerName = {
     describe: 'customer_name',
     demand : true,
-    alias : 'name'
+    alias : 'n'
 }
 
 const customerEmail = {
     describe: 'customer_email',
     demand : true,
-    alias : 'email'
+    alias : 'e'
 }
 
 const argv =  yargs
-
     .command('add','Add customer to json',{
         id: customerID,
         name: customerName,
-        email: customerEmail
+        emailID: customerEmail
     })
     .command('list','get all customers list')
     .command('read','get a customer details',{
-        email: customerEmail
+        emailID: customerEmail
     })
     .command('remove','delete customer from json',{
-        email: customerEmail
+        emailID: customerEmail
     })
     .help()
     .argv;
@@ -42,10 +41,13 @@ const argv =  yargs
 var command = argv._[0];
 
 if (command === 'add'){
-    var customerAdded = customer.addCustomer(argv.id,argv.name,argv.email);
+    console.log('in command');
+    var customerAdded = customer.addCustomer(argv.id,argv.name,argv.emailID);
     if (customerAdded){
-        customer.log(customerAdded);
+        console.log(customerAdded);
     } else{
 
     }
+} else{
+    console.log('command note recognized');
 }
