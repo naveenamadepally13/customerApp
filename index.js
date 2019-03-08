@@ -41,13 +41,27 @@ const argv =  yargs
 var command = argv._[0];
 
 if (command === 'add'){
-    console.log('in command');
+    // console.log('in command');
     var customerAdded = customer.addCustomer(argv.id,argv.name,argv.emailID);
     if (customerAdded){
         console.log(customerAdded);
     } else{
 
     }
-} else{
+} else if (command === 'read') {
+    var customerDetail = customer.getCustomerDetails(argv.emailID);
+    if(customerDetail){
+        console.log(customerDetail);
+    }
+    else{
+        console.log("Customer details are not present");
+    }
+} else if (command === 'list') {
+    var allCustomers = customer.getCustomers();
+    allCustomers.forEach((customer)=>{
+        console.log(customer);
+    });
+}
+else{
     console.log('command note recognized');
 }

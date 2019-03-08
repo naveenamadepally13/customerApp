@@ -17,11 +17,11 @@ var saveCustomer = (customer) => {
 // CRUD Operations
 
 var addCustomer = (id,name,emailID) => {
-    console.log('in add');
+    // console.log('in add');
      var customers = getCustomers();
     var customer = {id,name,emailID}
 
-    console.log('in add' + id + name + emailID);
+    // console.log('in add' + id + name + emailID);
 
      var checkCustomer =  customers.filter((customer) => {
          return customer.emailID === emailID;
@@ -52,12 +52,13 @@ var log = (customer) => {
     console.log('Customer '+ customer.emailID +' added to json');
 };
 
+
 //update customer in json
 
 // delete customer from json
 
 
 module.exports = {
-    addCustomer, getCustomerDetails
+    addCustomer, getCustomerDetails, log, getCustomers
 };
 
