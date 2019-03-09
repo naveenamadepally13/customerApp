@@ -35,6 +35,13 @@ const argv =  yargs
     .command('remove','delete customer from json',{
         emailID: customerEmail
     })
+    .command('update','update customer from json',{
+        emailID: customerEmail,
+        name: customerName
+    })
+    .command('delete','update customer from json',{
+        emailID: customerEmail
+    })
     .help()
     .argv;
 
@@ -61,6 +68,22 @@ if (command === 'add'){
     allCustomers.forEach((customer)=>{
         console.log(customer);
     });
+}else if (command === 'update') {
+    var customerDetail = customer.updateCustomerDetails(argv.emailID, argv.name);
+    if(customerDetail){
+        console.log(customerDetail);
+    }
+    else{
+        console.log("Customer details are not present");
+    }
+}else if (command === 'delete') {
+    var customerDetail = customer.deleteCustomerDetails(argv.emailID);
+    if(customerDetail){
+        console.log(customerDetail);
+    }
+    else{
+        console.log("Customer details are not present");
+    }
 }
 else{
     console.log('command note recognized');
