@@ -32,14 +32,11 @@ const argv =  yargs
     .command('read','get a customer details',{
         emailID: customerEmail
     })
-    .command('remove','delete customer from json',{
-        emailID: customerEmail
-    })
     .command('update','update customer from json',{
         emailID: customerEmail,
         name: customerName
     })
-    .command('delete','update customer from json',{
+    .command('delete','delete customer from json',{
         emailID: customerEmail
     })
     .help()
